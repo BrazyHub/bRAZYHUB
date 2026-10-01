@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#241021">
+  <meta name="description" content="BRAZYHUB - Sistem Komposisi Zat Gizi Makanan">
+  <title>BRAZYHUB - Sistem Komposisi Zat Gizi Makanan</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #241021;
+    }
+    #loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: #241021;
+      color: #fce7f3;
+      font-family: Arial, sans-serif;
+      z-index: 2;
+      transition: opacity .3s ease;
+    }
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 4px solid rgba(249, 168, 212, .25);
+      border-top-color: #ec4899;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    .brand {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #f9a8d4;
+    }
+    .loading-text {
+      font-size: 14px;
+      color: #fbcfe8;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #appFrame {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #fff;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader" role="status" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <div class="brand">BRAZYHUB</div>
+    <div class="loading-text">Memuat aplikasi...</div>
+  </div>
+
+  <!-- URL Web App BRAZYHUB (bukan URL Server Lisensi) -->
+  <iframe
+    id="appFrame"
+    src="https://script.google.com/macros/s/AKfycbwUZOJ1QiJ2il9tDKisoXN7Ok3URW3ySyOIVBO2YU7w7wzFBqY2_HXJQYBcT70rAK9e/exec"
+    title="BRAZYHUB - Sistem Komposisi Zat Gizi Makanan"
+    allow="clipboard-write"
+    onload="document.getElementById('loader').style.display='none';"
+  ></iframe>
+</body>
+</html>
