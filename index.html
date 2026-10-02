@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#241021">
   <meta name="description" content="BRAZYHUB - Sistem Komposisi Zat Gizi Makanan">
   <title>BRAZYHUB - Sistem Komposisi Zat Gizi Makanan</title>
@@ -15,6 +15,7 @@
       height: 100%;
       overflow: hidden;
       background: #241021;
+      -webkit-text-size-adjust: 100%;
     }
     #loader {
       position: fixed;
@@ -30,6 +31,7 @@
       z-index: 2;
       transition: opacity .3s ease;
     }
+    #loader.hide { opacity: 0; pointer-events: none; }
     .spinner {
       width: 36px;
       height: 36px;
@@ -44,19 +46,19 @@
       letter-spacing: 1px;
       color: #f9a8d4;
     }
-    .loading-text {
-      font-size: 14px;
-      color: #fbcfe8;
-    }
+    .loading-text { font-size: 14px; color: #fbcfe8; }
     @keyframes spin { to { transform: rotate(360deg); } }
+
     #appFrame {
       position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
       border: 0;
       display: block;
-      background: #fff;
+      background: #241021;
       z-index: 1;
     }
   </style>
@@ -74,7 +76,19 @@
     src="https://script.google.com/macros/s/AKfycbw7OAZL32hJYVHP7JEAMMKf5ux8GovpDusJbey9U6fn20YhUgn-pi8SaWKuOXedcOEU/exec"
     title="BRAZYHUB - Sistem Komposisi Zat Gizi Makanan"
     allow="clipboard-write"
-    onload="document.getElementById('loader').style.display='none';"
   ></iframe>
+
+  <script>
+    (function () {
+      var loader = document.getElementById('loader');
+      var frame = document.getElementById('appFrame');
+      function hideLoader() {
+        loader.classList.add('hide');
+        setTimeout(function () { loader.style.display = 'none'; }, 350);
+      }
+      frame.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 8000); // jaga-jaga jika event load tidak terpanggil
+    })();
+  </script>
 </body>
 </html>
